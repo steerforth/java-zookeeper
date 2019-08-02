@@ -19,6 +19,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * org.apache.zookeeper的版本需大于3.4.14，之前的有中等程度的安全问题
+ */
 public class ZookeeperTest {
     private static Logger LOGGER = LoggerFactory.getLogger(ZookeeperTest.class);
     private static final int TIME_OUT = 2000;
@@ -54,12 +57,6 @@ public class ZookeeperTest {
         byte[] data = zooKeeper.getData(path,true,stat);
         LOGGER.info("获取节点:[{}]数据成功:[{}],version:{}",path,new String(data),stat.getVersion());
         Thread.sleep(10000);
-
-        Stat stat2 = new Stat();
-        List<String> childrenPath = zooKeeper.getChildren(path,true,stat2);
-        LOGGER.info("获取节点{},版本:{}下子节点成功",path,stat2.getVersion());
-        childrenPath.stream().forEach(p->LOGGER.info(p));
-        Thread.sleep(3000);
     }
 
     @Test
