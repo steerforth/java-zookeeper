@@ -27,14 +27,11 @@ public class DistributedLockTest {
                         e.printStackTrace();
                     }
 
-                    if (lock1.acquireClock()){
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }else{
-                        LOGGER.warn("未获取到锁，执行任务失败！！！");
+                    lock1.acquireClock();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                     lock1.unlock();
 

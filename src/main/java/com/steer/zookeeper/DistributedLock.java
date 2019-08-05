@@ -109,7 +109,6 @@ public class DistributedLock {
                return true;
            }else{
                String preLockPath = lockPaths.get(index-1);
-               Thread.sleep(7000);
                Stat stat = zkClient.exists(LOCK_ROOT_PATH+"/"+preLockPath,nodeWatcher);
                if (stat == null){
                    //节点不存在，重新获取锁
