@@ -51,7 +51,7 @@ public class ZookeeperTest {
 
     @Test
     public void testGetNode() throws KeeperException, InterruptedException {
-        String path = "/test";
+        String path = "/test2";
         LOGGER.info("获取节点:{}的信息",path);
         Stat stat = new Stat();
         byte[] data = zooKeeper.getData(path,true,stat);
@@ -102,7 +102,12 @@ public class ZookeeperTest {
         Thread.sleep(3000);
     }
 
-
+    /**
+     * 节点权限控制
+     * @throws NoSuchAlgorithmException
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
     @Test
     public void testAcl() throws NoSuchAlgorithmException, KeeperException, InterruptedException {
         ArrayList<ACL> acls = new ArrayList<>();

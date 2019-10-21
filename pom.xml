@@ -36,6 +36,12 @@
             <!--<type>pom</type>-->
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
         <!-- 添加slf4j日志api -->
         <dependency>
             <groupId>org.slf4j</groupId>
