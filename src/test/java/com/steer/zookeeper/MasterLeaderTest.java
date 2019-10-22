@@ -22,7 +22,7 @@ public class MasterLeaderTest {
     static int countClient=10;
 
     //设置leader的路径
-    static String select_path="/selector";
+    static String select_path="/das-1";
 
     public CuratorFramework initClient(){
         RetryPolicy policy=new ExponentialBackoffRetry(1000,3);
@@ -30,7 +30,7 @@ public class MasterLeaderTest {
                 .sessionTimeoutMs(1000)
                 .connectionTimeoutMs(3000)
                 .retryPolicy(policy)
-                .namespace("steer")//独立操作的节点空间
+                .namespace("dass")//独立操作的节点空间
                 .build();
         return client;
     }

@@ -18,6 +18,9 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * curator 版本和zookeeper的版本有对应关系
+ */
 public class CuratorTest {
     private Logger LOGGER = LoggerFactory.getLogger(CuratorTest.class);
 
@@ -45,6 +48,9 @@ public class CuratorTest {
      */
     @Test
     public void testCreate() throws Exception {
+        if (client.isZk34CompatibilityMode()){
+            LOGGER.info("当前在zookeeper3.4.X兼容模式运行");
+        }
         client.create()
         .creatingParentsIfNeeded()//递归创建,如果没有父节点,自动创建父节点
         .withMode(CreateMode.PERSISTENT)//节点类型,持久节点
