@@ -33,7 +33,6 @@
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
-            <!--<type>pom</type>-->
         </dependency>
 
         <dependency>

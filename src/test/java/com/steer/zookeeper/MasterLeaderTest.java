@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit;
 public class MasterLeaderTest {
     private Logger LOGGER = LoggerFactory.getLogger(MasterLeaderTest.class);
     //设置客户端的数量
-    static int countClient=10;
+    static final int countClient= 3;
 
     //设置leader的路径
-    static String select_path="/das-1";
+    static final String select_path="/das-1";
 
     public CuratorFramework initClient(){
         RetryPolicy policy=new ExponentialBackoffRetry(1000,3);
@@ -92,14 +92,14 @@ public class MasterLeaderTest {
 
         System.in.read();
 
-        for(CuratorFramework client:clients){
-            CloseableUtils.closeQuietly(client);
-        }
 
         for(LeaderLatch leader:leaders){
             CloseableUtils.closeQuietly(leader);
         }
 
+        for(CuratorFramework client:clients){
+            CloseableUtils.closeQuietly(client);
+        }
 
     }
 
